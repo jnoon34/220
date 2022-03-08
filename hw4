@@ -1,0 +1,25 @@
+create database STORE;
+use STORE;
+create table orders(
+    id int not null unique auto_increment,
+    product varchar(20),
+    cost int,
+    customerId int,
+    primary key (id),
+    foreign key (customerId) references customers(id)
+);
+create table customers (
+    id int (1),
+    firstname varchar(20),
+    lastname varchar(20),
+    company varchar(20),
+    primary key (id)
+);
+insert into customers (id, firstname, lastname) VALUE ('1','john','noonan');
+insert into customers (id, lastname, lastname) VALUE ('2','todd','smith');
+insert into orders (product, cost, customerId) VALUE ('toothpaste','15',1);
+insert into orders (product, cost, customerId) VALUE ('toothbrush','10',1);
+INSERT INTO orders (product, cost, customerId) VALUE ('comb','10',2);
+insert into orders (product, cost, customerId) VALUE ('mouthwash','15',2);
+select * from customers;
+select * from orders;
