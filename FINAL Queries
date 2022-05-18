@@ -1,0 +1,12 @@
+use Movie_Company;
+
+select firstname,lastname from Actors
+natural join Movies
+where genre = 'Comedy';
+
+select firstname,lastname from Directors
+where firstname = 'Steven' and lastname = 'Spielberg';
+
+select firstname,lastname,title,genre,release_year from Directors
+natural join Movies
+where release_year = 2015;
