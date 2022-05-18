@@ -1,0 +1,38 @@
+CREATE DATABASE Movie_Company;
+USE Movie_Company;
+CREATE TABLE Movies(
+   id int unique auto_increment,
+   title varchar(20) not null,
+   release_year int,
+   genre varchar(20)
+);
+CREATE TABLE Directors(
+    id int primary key auto_increment,
+    firstname varchar(20) not null,
+    lastname varchar(20) not null,
+    MoviesId int not null,
+    foreign key (MoviesId) references Movies(id)
+);
+CREATE TABLE Actors(
+    id int unique auto_increment,
+    firstname varchar(20) not null,
+    lastname varchar(20) not null
+);
+CREATE TABLE Actor_Movie_Relationship(
+    id serial primary key auto_increment,
+    ActorsId int references Actors(id),
+    MoviesId int references Movies(id)
+);
+
+use Movie_Company;
+insert into Movies(id,title, release_year, genre) VALUES (1,'Barely Lethal',2015,'Comedy');
+insert into Movies(id,title, release_year, genre) VALUES (2,'Jurassic Park',1993,'Sci-fi');
+insert into Movies(id,title, release_year, genre) VALUES (3,'Jaws',1975,'Thiller');
+insert into Directors(firstname, lastname, MoviesId) VALUES ('Kyle','Newman',1);
+insert into Directors(firstname, lastname, MoviesId) VALUES ('Steven', 'Spielberg',2);
+insert into Directors(firstname, lastname, MoviesId) VALUES ('Steven', 'Spielberg',3);
+insert into Actors(id, firstname, lastname) VALUES (1,'Samuel','Jackson');
+insert into Actors(id, firstname, lastname) VALUES (2,'Roy','Scheider');
+insert into Actor_Movie_Relationship(ActorsId, MoviesId) VALUES (1,1);
+insert into Actor_Movie_Relationship(ActorsId, MoviesId) VALUES (1,2);
+insert into Actor_Movie_Relationship(ActorsId, MoviesId) VALUES (2,3);
